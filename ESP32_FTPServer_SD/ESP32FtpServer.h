@@ -49,8 +49,8 @@
 #define FTP_FIL_SIZE 255     // max size of a file name
 
 //#define FTP_BUF_SIZE 512 //512   // size of file buffer for read/write
-#define FTP_BUF_SIZE 2*1460 //512   // size of file buffer for read/write
-//#define FTP_BUF_SIZE 4096 //512   // size of file buffer for read/write
+//#define FTP_BUF_SIZE 2*1460 //512   // size of file buffer for read/write
+#define FTP_BUF_SIZE 4096 //512   //  700 KByte/s download in AP mode, direct connection.
 
 
 class FtpServer
