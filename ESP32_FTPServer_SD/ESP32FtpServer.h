@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 //  2017: modified by @robo8080
+//  2019: modified by @fa1ke5
 
 /*******************************************************************************
  **                                                                            **
@@ -27,13 +28,13 @@
  *******************************************************************************/
 
 // Uncomment to print debugging info to console attached to ESP8266
-//#define FTP_DEBUG
+#define FTP_DEBUG
 
 #ifndef FTP_SERVERESP_H
 #define FTP_SERVERESP_H
 
 //#include "Streaming.h"
-#include "SD.h"
+#include "SD_MMC.h"
 #include <FS.h>
 #include <WiFiClient.h>
 
@@ -46,7 +47,11 @@
 #define FTP_CMD_SIZE 255 + 8 // max size of a command
 #define FTP_CWD_SIZE 255 + 8 // max size of a directory name
 #define FTP_FIL_SIZE 255     // max size of a file name
-#define FTP_BUF_SIZE 1024 //512   // size of file buffer for read/write
+
+//#define FTP_BUF_SIZE 512 //512   // size of file buffer for read/write
+#define FTP_BUF_SIZE 2*1460 //512   // size of file buffer for read/write
+//#define FTP_BUF_SIZE 4096 //512   // size of file buffer for read/write
+
 
 class FtpServer
 {
@@ -55,6 +60,8 @@ public:
   void    handleFTP();
 
 private:
+ bool haveParameter();
+bool    makeExistsPath( char * path, char * param = NULL );
   void    iniVariables();
   void    clientConnected();
   void    disconnectClient();
@@ -76,7 +83,7 @@ private:
   IPAddress      dataIp;              // IP address of client for data
   WiFiClient client;
   WiFiClient data;
-  
+
   File file;
   
   boolean  dataPassiveConn;
@@ -103,5 +110,3 @@ private:
 };
 
 #endif // FTP_SERVERESP_H
-
-
