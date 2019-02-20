@@ -531,11 +531,15 @@ boolean FtpServer::processCommand()
           fn.remove(0, pos+1); //Удаляем все до имени файла включительно
           fs = String(file.size());
           if(file.isDirectory()){
-            data.println( "Type=dir;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
+	  
+	      data.println(fn);
+//            data.println( "Type=dir;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
 //            data.println( "Type=dir;modify=20000101000000; " + fn);
           } else {
+	      data.println( fs + " " + fn);
             //data.println( "Type=file;Size=" + fs + ";"+"modify=20000101160656;" +" " + fn);
-            data.println( "Type=file;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
+            //data.println( "Type=file;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
+	      
           }
           nm ++;
           file = dir.openNextFile();
