@@ -451,6 +451,7 @@ boolean FtpServer::processCommand()
           file = dir.openNextFile();
         }
         client.println( "226 " + String(nm) + " matches total");
+        data.stop();
       }
       
       }
