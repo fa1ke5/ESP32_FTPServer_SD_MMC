@@ -457,46 +457,7 @@ boolean FtpServer::processCommand()
       else{
         client.println( "425 No data connection");
         data.stop();
-        }
-  /*    
-   
-    if( ! dataConnect())
-      client.println( "425 No data connection");
-    else
-    {
-     client.println( "150 Accepted data connection");
-      uint16_t nm = 0;
-      File dir=SD_MMC.open(cwdName);
-     if((!dir)||(!dir.isDirectory()))
-        client.println( "550 Can't open directory " + String(cwdName) );
-      else
-      {
-        File file = dir.openNextFile();
-        while( file)
-        {
-    			String fn, fs;
-          fn = file.name();
-          int i = fn.lastIndexOf("/")+1;
-    			fn.remove(0, i);
-      		#ifdef FTP_DEBUG
-  			  Serial.println("File Name = "+ fn);
-      		#endif
-          fs = String(file.size());
-          if(file.isDirectory()){
-            data.println( "01-01-2000  00:00AM <DIR> " + fn);
-          } else {
-            data.println( "01-01-2000  00:00AM " + fs + " " + fn);
-//          data.println( " " + fn );
-          }
-          nm ++;
-          file = dir.openNextFile();
-        }
-        client.println( "226 " + String(nm) + " matches total");
-      }
-      data.stop();
-    }
-*/
-    
+        }    
   }
   
   //
