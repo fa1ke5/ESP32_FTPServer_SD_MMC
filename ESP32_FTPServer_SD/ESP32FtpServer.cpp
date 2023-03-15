@@ -494,13 +494,12 @@ boolean FtpServer::processCommand()
           fs = String(file.size());
           if(file.isDirectory()){
 	  
-	      data.println(fn);
-//            data.println( "Type=dir;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
-//            data.println( "Type=dir;modify=20000101000000; " + fn);
+//	      data.println(fn);
+              data.println( "Type=dir;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
+
           } else {
-	      data.println( fs + " " + fn);
-            //data.println( "Type=file;Size=" + fs + ";"+"modify=20000101160656;" +" " + fn);
-            //data.println( "Type=file;Size=" + fs + ";"+"modify=20000101000000;" +" " + fn);
+//	      data.println( fs + " " + fn);
+              data.println( "Type=file;Size=" + fs + ";"+"modify=20000101160656;" +" " + fn);
 	      
           }
           nm ++;
