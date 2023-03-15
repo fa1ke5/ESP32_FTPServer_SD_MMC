@@ -399,7 +399,7 @@ boolean FtpServer::processCommand()
   else if( ! strcmp( command, "DELE" ))
   {
     char path[ FTP_CWD_SIZE ];
-    if( strlen( parameters ) == 0 )
+    if (haveParameter())
       client.println( "501 No file name");
     else if( makePath( path ))
     {
@@ -556,14 +556,14 @@ boolean FtpServer::processCommand()
   else if( ! strcmp( command, "RETR" ))
   {
     char path[ FTP_CWD_SIZE ];
-    if( strlen( parameters ) == 0 )
+    if (haveParameter())
       client.println( "501 No file name");
     else if( makePath( path ))
 	{
 		file = SD_MMC.open(path, "r");
       if( !file)
         client.println( "550 File " +String(parameters)+ " not found");
-      else if( !file )
+
         client.println( "450 Can't open " +String(parameters));
       else if( ! dataConnect())
         client.println( "425 No data connection");
@@ -586,7 +586,7 @@ boolean FtpServer::processCommand()
   else if( ! strcmp( command, "STOR" ))
   {
     char path[ FTP_CWD_SIZE ];
-    if( strlen( parameters ) == 0 )
+    if (haveParameter())
       client.println( "501 No file name");
     else if( makePath( path ))
     {
@@ -687,7 +687,7 @@ boolean FtpServer::processCommand()
     char dir[ FTP_FIL_SIZE ];
     if( strlen( buf ) == 0 || ! rnfrCmd )
       client.println( "503 Need RNFR before RNTO");
-    else if( strlen( parameters ) == 0 )
+    else if (haveParameter())
       client.println( "501 No file name");
     else if( makePath( path ))
     {
