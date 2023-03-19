@@ -561,10 +561,10 @@ boolean FtpServer::processCommand()
     else if( makePath( path ))
 	{
 		file = SD_MMC.open(path, "r");
-      if( !file)
+      if( !file){
         client.println( "550 File " +String(parameters)+ " not found");
-
         client.println( "450 Can't open " +String(parameters));
+        }
       else if( ! dataConnect())
         client.println( "425 No data connection");
       else
