@@ -30,8 +30,8 @@
 // Uncomment to print debugging info to console attached to ESP8266
 #define FTP_DEBUG
 
-#ifndef FTP_SERVERESP_H
-#define FTP_SERVERESP_H
+#ifndef ESP32FTP_SERVERESP_H
+#define ESP32FTP_SERVERESP_H
 
 //#include "Streaming.h"
 #include "SD_MMC.h"
